@@ -26,7 +26,24 @@
   <body>
     <div id="map"></div>
     <script>
-      // add the JavaScript here
+    //=========Initialize map, style and start position=========//
+    mapboxgl.accessToken = 'pk.eyJ1IjoicmFuZ29zb2xvMTIzNCIsImEiOiJjbHM5Z3RyZXIwN3pkMmpvZjAwa3lubHF4In0.han1YYp7hnXPVrRPrCrnHA';
+    const map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/mapbox/streets-v12', // map style
+        center: [-122.662323, 45.523751], // starting position
+        zoom: 12 // starting zoom
+        });
+     // set the bounds of the map
+    const bounds = [
+        [-123.069003, 45.395273],
+        [-122.303707, 45.612333]
+        ];
+    map.setMaxBounds(bounds);
+
+    // an arbitrary start/origin point will always be the same
+    // only the end/destination will change
+    const start = [-122.662323, 45.523751];
     </script>
   </body>
 </html>
