@@ -87,6 +87,66 @@
             });
         }
         }
+
+
+
+        map.on('load', () => {
+        const defaultEnd = [-122.61306001669664, 45.52776064404637]
+        // add origin circle to the map
+        map.addLayer({
+            'id': 'origin-circle',
+            'type': 'circle',
+            'source': {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': [
+                {
+                    'type': 'Feature',
+                    'properties': {},
+                    'geometry': {
+                    'type': 'Point',
+                    'coordinates': start
+                    }
+                }
+                ]
+            }
+            },
+            'paint': {
+            'circle-radius': 10,
+            'circle-color': '#4ce05b'
+            }
+        });
+
+        // add destination circle to the map
+        map.addLayer({
+            'id': 'destination-circle',
+            'type': 'circle',
+            'source': {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': [
+                {
+                    'type': 'Feature',
+                    'properties': {},
+                    'geometry': {
+                    'type': 'Point',
+                    'coordinates': defaultEnd
+                    }
+                }
+                ]
+            }
+            },
+            'paint': {
+            'circle-radius': 10,
+            'circle-color': '#f30'
+            }
+        });
+
+        // make an initial directions request on load
+        getRoute(defaultEnd);
+        });
     </script>
   </body>
 </html>
